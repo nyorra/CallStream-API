@@ -41,7 +41,7 @@ docker-compose up -d --build
 Используйте uv для мгновенной настройки:
 ```bash
 uv sync
-source .venv/bin/activate  # или .\.venv\Scripts\activate для Windows
+source .venv/bin/activate
 uvicorn app.main:app --reload
 ```
 ### 4. Миграции базы данных (Alembic)
