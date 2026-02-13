@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Literal
 
 """ Базовая схема валидации входящих данный из json от сервиса типа ~Asterisk, все поля обязательны (...,)"""
@@ -38,3 +38,18 @@ class CallBase(BaseModel):
     )  # звонок в промежутке от 1 сек до 1 часа
 
 
+""" То что мы ждем от сервиса, """
+
+
+class CallCreate(CallBase):
+    pass
+
+
+""" То что мы отдаем клиенту """
+
+
+class CallResponce(CallBase):
+    id: int
+    created_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
